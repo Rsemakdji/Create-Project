@@ -6,4 +6,18 @@
 /*  header  */
 .Header{
   border: black 1px solid;
+  margin-top: 15px;
+  height: 150px;
+  
 }
+.image-card{
+  width: 150px;
+  height: 200px;
+  border-radius: 10px;
+
+ }
+ .image-chapter{
+  width: 150px;
+  height: 200px;
+  border-radius: 10px;
+ }

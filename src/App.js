@@ -11,7 +11,7 @@ function App() {
       <Header></Header>
       <Routes>
         <Route path="/" element={<BooksGallery/>}/>
-        <Route path="/chap" element={<ChaptersGallery/>}/>
+        <Route path="/chapters/:bookId" element={<ChaptersGallery/>}/>
       </Routes>
       
     </div>

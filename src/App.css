@@ -1,23 +1,103 @@
-.App {
-  text-align: center;
-}
-
-
-/*  header  */
-.Header{
-  border: black 1px solid;
-  margin-top: 15px;
-  height: 150px;
+  body{
+    background: linear-gradient(90deg, rgb(180, 99, 235) 40%, rgb(39, 69, 242) 100%);
   
+  }
+  .App {
+   text-align: center;
 }
-.image-card{
-  width: 150px;
-  height: 200px;
-  border-radius: 10px;
 
- }
- .image-chapter{
-  width: 150px;
-  height: 200px;
-  border-radius: 10px;
- }
+  .Header{
+    border: black 1px solid;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 15px;
+    height: 150px;
+}
+  
+  .titre-app{
+    padding-top: 70px;
+    text-transform: uppercase;
+  }
+  
+   /*  BOOKLIST */
+
+   .container-book-card{ 
+    margin: 100px auto 0;
+    padding: 0 20px;
+    max-width: 1300px;
+    display: grid;
+    grid-template-columns:repeat(auto-fill, 200px);
+    grid-gap: 10px; 
+   }
+
+   .book-card:hover{
+    zoom: 1.3;
+    box-shadow: 0 0 20px 0;
+    border-radius : 10px;
+   }
+  
+   .image-book-card{
+     width: 150px;
+     height: 200px;
+     border-radius: 10px;
+    }
+
+    .link-book-card{
+     text-transform: uppercase;
+     text-decoration: none;
+    }
+   
+   /*  CHAPTER */
+   
+   .container-chapter-card{ 
+    margin: 100px auto 0;
+    padding: 0 20px;
+    max-width: 1300px;
+    display: grid;
+    grid-template-columns:repeat(auto-fill, 200px);
+    grid-gap: 10px; 
+   }
+   
+   .chapter-card:hover{
+    zoom: 1.3;
+    box-shadow: 0 0 20px 0;
+    border-radius : 10px;
+   }
+   
+   
+   .image-chapter-card{
+     width: 150px;
+     height: 200px;
+     border-radius: 10px;
+    }
+
+    .link-chapter-card{
+       text-transform: uppercase;
+       text-decoration: none;
+      }
+    
+  
+   /* INVALID ITEMS */
+   
+   .invalid-card{
+     opacity  : 0.30;
+   }
+
+   .invalid-image-card{
+    width: 150px;
+    height: 200px;
+   }
+
+   .invalid-link{
+    text-transform: uppercase;
+    text-decoration: none;
+    pointer-events: none;   
+   }
+   
+  
+  /*  VOID ITEM */
+
+  .void-item{
+    display: none;
+  }
+  

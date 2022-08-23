@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {Link } from "react-router-dom";
 import NotValid from "../image/NotValid.jpg";
+import Loader from "./Loader.jsx";
 // query gql 
 import { GET_ALL_BOOKS } from '../gql/Gql';
 // usequery hooks 
@@ -9,10 +10,11 @@ import { useQuery } from "@apollo/client";
 
 export default function BooksList(){
 
-    const {loading, error, data } = useQuery(GET_ALL_BOOKS);
-    
+  let {loading, error, data } = useQuery(GET_ALL_BOOKS);
+  console.log(data)
+   
     if(loading){
-        return <h1>chargement des données ...</h1>
+        return <Loader></Loader> 
      }
      if(error){
          return<div>{error.message}</div>
@@ -22,38 +24,33 @@ export default function BooksList(){
      } 
  
      return(
-         <div className='container'>    
+         <div className='container-book-card'>    
              {data?.viewer.books.hits.map((item) => {
                  if(item.displayTitle === null || item.displayTitle ==="undefined" ){
                      return(
-                         <div key={item.id} className='card-book-void'></div>
+                         <div key={item.id} className='void-item'></div>
                      )
                  }
                  if(item.valid === true){
                      if(item.url === null){
                          return (
-                             
-                                 <div key={item.id}  className='card-book'>
-                                     <div className='container-title'>
-                                     <img className='image-card' src={NotValid}></img>
-                                </div> 
+                                 <div key={item.id}  className='book-card'>
+                                     <img className='invalid-image-card' src={NotValid}></img>
                                 <Link 
-                                     className='lien-book'
+                                     className='link-book-card'
                                      id={item.id}  
                                      to={`/chapters/${item.id}`}>{item.displayTitle}
                                  </Link> 
-                             </div>
+                             </div> 
                              
                          )
                      }
                      else {
                          return (
-                             <div key={item.id}  className='card-book'>
-                                     <div className='container-title'>
-                                     <img className='image-card' src={item.url}></img>
-                                </div> 
+                             <div key={item.id}  className='book-card'>  
+                                     <img className='image-book-card' src={item.url}></img>
                                 <Link 
-                                     className='lien-book'
+                                     className='link-book-card'
                                      id={item.id}  
                                      to={`/chapters/${item.id}`}>{item.displayTitle}
                                  </Link> 
@@ -64,12 +61,10 @@ export default function BooksList(){
                  if(item.valid === false){
                      if(item.url === null){
                          return(
-                             <div key={item.id}  className='card-book-invalid'>
-                                     <div className='container-title'>
-                                     <img className='invalid' src={NotValid}></img>
-                                </div> 
+                             <div key={item.id}  className='invalid-card'>
+                                     <img className='invalid-image-card' src={NotValid}></img>
                                 <Link 
-                                     className='lien-book-invalid'
+                                     className='invalid-link'
                                      id={item.id} 
                                      to={`/chapters/${item.id}`}>{item.displayTitle}
                                  </Link> 
@@ -78,12 +73,10 @@ export default function BooksList(){
                      }
                      else {
                          return (
-                             <div key={item.id}  className='card-book-invalid'>
-                                     <div className='container-title'>
-                                     <img className='invalid' src={item.url}></img>
-                                </div> 
+                             <div key={item.id}  className='invalid-card'>
+                                     <img className='invalid-image-card' src={item.url}></img>
                                 <Link 
-                                     className='lien-book-invalid'
+                                     className='invalid-link'
                                      id={item.id} 
                                      to={`/chapters/${item.id}`}>{item.displayTitle}
                                  </Link> 

@@ -2,30 +2,38 @@ import React, { useEffect, useState } from "react";
 import {Link } from "react-router-dom";
 import NotValid from "../image/NotValid.jpg";
 import Loader from "./Loader.jsx";
-// query gql 
-import { GET_ALL_BOOKS } from '../gql/Gql';
-// usequery hooks 
-import { useQuery } from "@apollo/client";
+import useBooks from "../hooks/useBooks";
+
 
 
 export default function BooksList(){
 
-  let {loading, error, data } = useQuery(GET_ALL_BOOKS);
-  console.log(data)
+    const {loading, error, books, setSubjectName} = useBooks()
    
     if(loading){
+        /*Animation de chargement */
         return <Loader></Loader> 
      }
      if(error){
+        /* message erreur */
          return<div>{error.message}</div>
      }
-     if(!data){
-         return<div>il n'y a pas de données a exposer</div>
+     /*  des données sont accessibles ? */
+     if(!books){
+         return<div> No books </div>
      } 
  
      return(
-         <div className='container-book-card'>    
-             {data?.viewer.books.hits.map((item) => {
+        <div>
+            <div className="container-btn">
+            <button className="btn-cat" onClick={() => setSubjectName("")}>Tous les livres</button>    
+            <button className="btn-cat" onClick={() => setSubjectName("Histoire-Géographie-EMC")}>Histoire geo</button>    
+            <button className="btn-cat" onClick={() => setSubjectName("Français")}>Français</button>   
+            <button className="btn-cat" onClick={() => setSubjectName("Mathématiques")}>Mathématiques</button>  
+            </div>
+            {/* traitement des données et possible incohérence  */}
+         <div className='container-book-card'>
+             {books.map((item) => {
                  if(item.displayTitle === null || item.displayTitle ==="undefined" ){
                      return(
                          <div key={item.id} className='void-item'></div>
@@ -87,6 +95,7 @@ export default function BooksList(){
                  return []
              })}
          </div>
+        </div>
      );
    
  }

@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 
 
+/* composant contenant l'animation du chargement  */
+
 const Container = styled.div `
 background: linear-gradient(90deg, rgb(180, 99, 235) 40%, rgb(39, 69, 242) 100%);
 min-height: 100vh;

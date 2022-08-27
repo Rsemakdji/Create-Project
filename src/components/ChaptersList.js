@@ -9,7 +9,7 @@ import { GET_CHAPTERS_FROM_BOOKID } from "../gql/Gql";
 import { useQuery } from "@apollo/client";
 
 export default function ChapterList(){
-
+ /* récupération de l'id dans les params  */
     const { bookId } = useParams();
     const { loading, error, data } = useQuery(GET_CHAPTERS_FROM_BOOKID, {
         variables: { bookId },
@@ -26,7 +26,8 @@ export default function ChapterList(){
       }
     
       return (
-        <div className='container-chapter-card'>    
+        <div className='container-chapter-card'>
+            {/* traitement des données et possible incohérence  */}    
             {data?.viewer.chapters.hits.map((item) => {
                 if(item.title === null || item.title ==="undefined" ){
                     return(

@@ -15,7 +15,6 @@ export default function BooksList(){
         return <Loader></Loader> 
      }
      if(error){
-        /* message erreur */
          return<div>{error.message}</div>
      }
      /*  des données sont accessibles ? */

@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function Lesson() {
 
-/* pas eu le temp  */
+/* a faire  */
 
   return (
     <div>Leçon</div>
